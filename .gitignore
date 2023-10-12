@@ -1,4 +1,5 @@
 # Manual
+output/
 output_*.txt
 
 # Byte-compiled / optimized / DLL files
