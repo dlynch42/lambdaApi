@@ -13,9 +13,6 @@ RUN mkdir -p ${FUNCTION_DIR}
 # Copy function code and models to the docker image from the current folder
 COPY app.py ${FUNCTION_DIR}
 
-# Copy the 'public' directory into the Docker image
-COPY public/ ${FUNCTION_DIR}/public
-
 # Install the function's dependencies
 RUN pip install \
     --target ${FUNCTION_DIR} \

@@ -103,7 +103,8 @@ class Arima():
         
         # S3
         self.s3 = boto3.resource('s3')
-        self.bucket = self.s3.Bucket('automodel')
+        self.bucketName = 'automodel'
+        self.bucket = self.s3.Bucket(self.bucketName)
         self.region = 'us-west-1'
         
         # Global Variables
@@ -244,7 +245,7 @@ class Arima():
         # Close the current figure
         plt.close()
         
-        return f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{forecast}'
+        return f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{forecast}'
     
     def plot_timeseries(self): 
         # Create a BytesIO stream to hold the plot data
@@ -276,7 +277,7 @@ class Arima():
         
         plt.close()  # Close the current figure
         
-        return f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{timeseries}'
+        return f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{timeseries}'
     
     def plot_diff(self):
         '''
@@ -294,7 +295,7 @@ class Arima():
         # Seasonal First Difference
         sfd = self.sfd_plot()
         
-        return f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{fd}', f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{secd}', f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{sd}', f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{sfd}'
+        return f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{fd}', f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{secd}', f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{sd}', f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{sfd}'
     
     def plot_resid(self): 
         # Create a BytesIO stream to hold the plot data
@@ -314,7 +315,7 @@ class Arima():
         
         plt.close()  # Close the current figure
         
-        return f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{resid}'
+        return f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{resid}'
         
     def plot_autocorrelation(self):
         acf_fd = self.acf_fd_plot()
@@ -322,7 +323,7 @@ class Arima():
         acf_auto_sfd = self.acf_auto_sfd_plot()
         pacf_sfd = self.pacf_sfd_plot()
         
-        return f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{acf_fd}', f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{acf_sfd}', f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{acf_auto_sfd}', f'https://{self.bucket}.s3.{self.region}.amazonaws.com/{pacf_sfd}'
+        return f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{acf_fd}', f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{acf_sfd}', f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{acf_auto_sfd}', f'https://{self.bucketName}.s3.{self.region}.amazonaws.com/{pacf_sfd}'
     
     # Stats
     def summ(self):
