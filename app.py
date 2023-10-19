@@ -86,6 +86,14 @@ def lambda_handler(event, context):
         }
     }
     
+    sqs = boto3.client('sqs')
+    
+    response = sqs.send_message(
+        QueueUrl='https://sqs.us-west-1.amazonaws.com/215770188184/automodelQueue',
+        MessageBody=data)
+
+    print(response)
+    
     return {
         'body': json.dumps(data),
         'statusCode': 200,

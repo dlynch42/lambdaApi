@@ -1,4 +1,4 @@
-# Invoke lambda function via API Gateway
+# Invoke lambda function
 # Test 1
 aws lambda invoke --function-name automodel --payload file://test/aapl.txt output/output_aapl.txt 
 
