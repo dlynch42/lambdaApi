@@ -1,6 +1,7 @@
 # Manual
 output/
 output_*.txt
+docker_deploy.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
